@@ -8,8 +8,9 @@
 ## Getting Criteria
 - Get number of rows
 - Get Sheet for looking up and column range 
-- Get starting row number
-- Get Error out default result
+- Get starting row number x
+- Get Error out default result x
+- Get desired file name for formula x
 
 ## Single Line example
 - =IFERROR(VLOOKUP({Lookup Sheet}!${Lookup Column}{RowNum},I:I,{Return Column},0),"NONE")

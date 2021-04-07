@@ -26,7 +26,7 @@ inquirer
         },
         {
             type: 'input',
-            name: 'rowCount',
+            name: 'endRow',
             message: 'What is the ending row for the vlookups?',
         },
         {
@@ -37,28 +37,29 @@ inquirer
     ])
     .then((data) => {
 
-        var funcString;
+        var formString;
         var ifErrorString;
+        var i = parseInt(data.startRow,10);
+        var j = parseInt(data.endRow,10);
+        console.log(typeof(i));
+        console.log(typeof(j));
 
-        var rowCount = data.rowCount - data.startRow;
-        
-        for (var i = data.startRow; i < rowCount; i++){
+        for (i; i <= j; i++){
 
-            if (funcString == undefined){
-                funcString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0),";
-                ifErrorString = "IFERROR(";
+            console.log(i);
+
+            if (formString == undefined){
+                formString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0),";
             } else {
-                funcString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0)," + funcString;
-                ifErrorString = "IFERROR(" + ifErrorString;
-            }
-
-
-
+                formString = formString + "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0)),";
+            };
+            ifErrorString = "IFERROR(" + ifErrorString;
         }
 
         const fileName = data.fileName + ".txt";
+        const finForm = "=" + ifErrorString + formString + `"NONE")`;
 
-        fs.writeFile(fileName,finFunc, (err) =>
+        fs.writeFile(fileName,finForm, (err) =>
             err ? console.log(err) : console.log('Success!')
         );
     });
