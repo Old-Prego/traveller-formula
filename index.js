@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { ifError } = require('assert');
 
 inquirer
     .prompt([
@@ -41,19 +40,15 @@ inquirer
         var ifErrorString;
         var i = parseInt(data.startRow,10);
         var j = parseInt(data.endRow,10);
-        console.log(typeof(i));
-        console.log(typeof(j));
 
         for (i; i <= j; i++){
-
-            console.log(i);
-
             if (formString == undefined){
                 formString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0),";
+                ifErrorString = "IFERROR(";
             } else {
                 formString = formString + "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0)),";
+                ifErrorString = "IFERROR(" + ifErrorString;
             };
-            ifErrorString = "IFERROR(" + ifErrorString;
         }
 
         const fileName = data.fileName + ".txt";

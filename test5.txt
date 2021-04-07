@@ -1,1 +1,0 @@
-=IFERROR(undefinedVLOOKUP(Electronics!$3$17,I:I,1,0),"NONE")
