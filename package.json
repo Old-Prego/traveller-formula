@@ -1,0 +1,11 @@
+{
+  "name": "traveller-lookup",
+  "version": "1.0.0",
+  "description": "This project is meant to help automate the process of building extremely long excel functions for the traveller used in pine river finishing",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(The test is working)"
+  },
+  "author": "Luke Perrine",
+  "license": "ISC"
+}
