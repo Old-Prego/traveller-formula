@@ -48,10 +48,10 @@ inquirer
 
         for (i; i <= j; i++){
             if (formString == undefined){
-                formString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0),";
+                formString = "VLOOKUP('" + data.sheet + "'!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0),";
                 ifErrorString = "IFERROR(";
             } else {
-                formString = formString + "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0)),";
+                formString = formString + "VLOOKUP('" + data.sheet + "'!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0)),";
                 ifErrorString = "IFERROR(" + ifErrorString;
             };
         }
