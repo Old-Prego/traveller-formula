@@ -6,6 +6,8 @@ It takes a couple of criteria points via inquirer, including row ranges, columns
 
 It uses that criteria to build a formula that can be used in excel with the specific lookup functions we already are using manually.
 
+After building the string, it dumps it into a text file in the same folder it has been made in.
+
 In order to run the code, just launch the "traveller-formula.bat" file.
 
 Made by LJP.

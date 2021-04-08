@@ -33,6 +33,11 @@ inquirer
             name: 'retCol',
             message: 'Which column should be returned from the vlookup (number)?',
         },
+        {
+            type: 'input',
+            name: 'queryColumn',
+            message: 'Which column should be referenced for the query (i.e. I:I typically)?',
+        },
     ])
     .then((data) => {
 
@@ -43,10 +48,10 @@ inquirer
 
         for (i; i <= j; i++){
             if (formString == undefined){
-                formString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0),";
+                formString = "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0),";
                 ifErrorString = "IFERROR(";
             } else {
-                formString = formString + "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + ",I:I," + data.retCol + ",0)),";
+                formString = formString + "VLOOKUP(" + data.sheet + "!$" + data.column + "$" + i + "," + data.queryColumn + "," + data.retCol + ",0)),";
                 ifErrorString = "IFERROR(" + ifErrorString;
             };
         }
